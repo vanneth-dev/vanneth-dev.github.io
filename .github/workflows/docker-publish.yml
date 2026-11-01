@@ -34,7 +34,7 @@ jobs:
           context: .
           push: true
           tags: |
-            vannethdev/vanneth-dev:production
+            vannethdev/vanneth-dev:latest
             vannethdev/vanneth-dev:${{ github.sha }}
 
           build-args: |
