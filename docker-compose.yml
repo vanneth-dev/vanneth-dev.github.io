@@ -1,26 +1,13 @@
 services:
-  vanneth-dev:
-    container_name: vanneth-dev
+  web:
     image: vannethdev/vanneth-dev:latest
-
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        VITE_NODE_ENV: ${VITE_NODE_ENV}
-        VITE_NODE_PUBLIC_URL: ${VITE_NODE_PUBLIC_URL}
-        VITE_NODE_BUILD_VERSION: ${VITE_NODE_BUILD_VERSION}
-        VITE_DEFAULT_LANGUAGE: ${VITE_DEFAULT_LANGUAGE}
-        VITE_API_URL: ${VITE_API_URL}
-        VITE_TELEGRAM_CHAT_ID: ${VITE_TELEGRAM_CHAT_ID}
-        VITE_HOTJAR_ID: ${VITE_HOTJAR_ID}
-        VITE_TURNSTILE_SITE_KEY: ${VITE_TURNSTILE_SITE_KEY}
-        VITE_API_CLIENT_KEY: ${VITE_API_CLIENT_KEY}
-        VITE_API_CLIENT_SECRET: ${VITE_API_CLIENT_SECRET}
-        VITE_API_SECRET_KEY: ${VITE_API_SECRET_KEY}
-        VITE_TELEGRAM_BOT_TOKEN: ${VITE_TELEGRAM_BOT_TOKEN}
-
-    ports:
-      - "3000:80"
-
+    container_name: vanneth-dev
     restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    ports:
+      - "8080:80"
